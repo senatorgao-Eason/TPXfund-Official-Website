@@ -393,6 +393,11 @@ const Navbar = () => {
 
   const navIds = ["platform", "strategies", "research", "launchpad", "careers"];
 
+  const toggleLanguage = () => {
+    const newLang = lang === "zh" ? "en" : "zh";
+    setLang(newLang);
+  };
+
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -419,11 +424,11 @@ const Navbar = () => {
             </button>
           ))}
           <button 
-            onClick={() => setLang(lang === "zh" ? "en" : "zh")}
-            className="flex items-center gap-2 text-slate-500 hover:text-[#00205B] transition-colors text-xs font-bold uppercase tracking-widest"
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-[#00205B] hover:text-white transition-all text-xs font-bold uppercase tracking-widest"
           >
-            <Languages className="w-4 h-4" />
-            {lang === "zh" ? "EN" : "中文"}
+            <Languages className="w-3.5 h-3.5" />
+            {lang === "zh" ? "English" : "中文"}
           </button>
           <button 
             onClick={() => scrollToSection("careers")}
@@ -463,13 +468,13 @@ const Navbar = () => {
           ))}
           <button 
             onClick={() => {
-              setLang(lang === "zh" ? "en" : "zh");
+              toggleLanguage();
               setIsMobileMenuOpen(false);
             }}
             className="flex items-center gap-2 text-slate-600 hover:text-[#00205B] transition-colors text-lg font-medium"
           >
             <Languages className="w-5 h-5" />
-            {lang === "zh" ? "English" : "中文"}
+            {lang === "zh" ? "Switch to English" : "切换至中文"}
           </button>
           <button 
             onClick={() => {
@@ -908,8 +913,81 @@ const Launchpad = () => {
   );
 };
 
+const ReportModal = ({ isOpen, onClose, report }: { isOpen: boolean; onClose: () => void; report: any }) => {
+  if (!isOpen || !report) return null;
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-black/90 backdrop-blur-md"
+          />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="relative bg-slate-900 border border-slate-800 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl p-8 md:p-16 shadow-2xl text-white"
+          >
+            <button 
+              onClick={onClose}
+              className="absolute top-8 right-8 p-2 hover:bg-white/10 rounded-full transition-colors z-50"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            
+            <div className="mb-12">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="px-3 py-1 bg-slate-800 text-[10px] font-bold uppercase tracking-widest rounded-full text-slate-300">
+                  {report.category}
+                </span>
+                <span className="text-xs font-mono text-slate-500">{report.date}</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-display font-bold tracking-tight mb-8 leading-tight">{report.title}</h2>
+              <div className="w-24 h-1 bg-white/20 mb-12" />
+            </div>
+
+            <div className="prose prose-invert max-w-none">
+              <p className="text-slate-300 text-xl leading-relaxed mb-10 font-light italic">
+                {report.excerpt}
+              </p>
+              <div className="space-y-8 text-slate-400 leading-relaxed text-lg font-light">
+                <p>
+                  <strong>[研究报告正文]</strong> 在当前的宏观经济背景下，我们观察到全球主要经济体的政策路径正在发生显著分化。通胀压力的持续性以及劳动力市场的韧性，迫使各国央行在维持增长与抑制通胀之间寻求微妙的平衡。
+                </p>
+                <p>
+                  我们的研究团队通过对高频经济数据、政策声明以及地缘政治动态的综合分析，识别出了未来几个季度可能对资产定价产生重大影响的关键风险点。特别是在利率环境波动的背景下，跨资产类别的相关性正在重塑。
+                </p>
+                <p>
+                  TPX Fund 始终致力于为投资者提供深度的市场洞察。通过跨资产类别的研究协作，我们能够更全面地评估宏观政策对不同投资策略的潜在影响，从而在多变的市场环境中捕捉超额收益。我们利用先进的数据分析工具，实时监控全球流动性变化及其对大宗商品和外汇市场的传导效应。
+                </p>
+                <p>
+                  展望未来，我们将继续关注地缘政治局势对供应链的长期影响，以及技术创新（特别是人工智能）对劳动生产率的潜在提振作用。这些因素将共同决定未来十年的宏观经济版图。
+                </p>
+                <div className="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 mt-12">
+                  <h4 className="text-white font-bold mb-4 uppercase tracking-widest text-sm">免责声明 / Disclaimer</h4>
+                  <p className="text-sm text-slate-500">
+                    本报告仅供参考，不构成任何投资建议。市场有风险，投资需谨慎。TPX Fund 不对因使用本报告内容而导致的任何损失承担责任。
+                    This report is for informational purposes only and does not constitute investment advice. Investing involves risk. TPX Fund is not responsible for any losses resulting from the use of this content.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 const Research = () => {
   const { t } = useContext(LanguageContext);
+  const [selectedReport, setSelectedReport] = useState<any>(null);
+
   return (
     <section id="research" className="py-32 bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -918,28 +996,27 @@ const Research = () => {
             <span className="text-xs font-bold uppercase tracking-[0.3em] text-slate-400 mb-4 block">{t.researchBadge}</span>
             <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tighter">{t.researchTitle}</h2>
           </div>
-          <a 
-            href="https://hyperionfund.net" 
-            target="_blank" 
-            rel="noopener noreferrer"
+          <button 
+            onClick={() => {
+              const element = document.getElementById("launchpad");
+              if (element) element.scrollIntoView({ behavior: "smooth" });
+            }}
             className="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-widest border-b-2 border-white pb-1 hover:opacity-70 transition-opacity"
           >
             {t.researchMore} <ChevronRight className="w-4 h-4" />
-          </a>
+          </button>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {t.researchItems.map((item, index) => (
-            <motion.a
+            <motion.div
               key={item.title}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              onClick={() => setSelectedReport(item)}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-white transition-all flex flex-col justify-between h-full"
+              className="group bg-slate-800/50 p-8 rounded-2xl border border-slate-700 hover:border-white transition-all flex flex-col justify-between h-full cursor-pointer"
             >
               <div>
                 <div className="flex justify-between items-start mb-6">
@@ -958,10 +1035,15 @@ const Research = () => {
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest group-hover:gap-4 transition-all">
                 {t.researchReadFull} <ArrowRight className="w-4 h-4" />
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
+      <ReportModal 
+        isOpen={!!selectedReport} 
+        onClose={() => setSelectedReport(null)} 
+        report={selectedReport} 
+      />
     </section>
   );
 };
