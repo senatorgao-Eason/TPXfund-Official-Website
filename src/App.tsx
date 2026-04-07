@@ -384,6 +384,15 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const navIds = ["platform", "strategies", "research", "launchpad", "careers"];
+
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -391,7 +400,7 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <div className="w-8 h-8 bg-[#00205B] flex items-center justify-center rounded-sm">
             <span className="text-white font-display font-bold text-xl">T</span>
           </div>
@@ -400,14 +409,14 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          {t.nav.map((item) => (
-            <a 
+          {t.nav.map((item, idx) => (
+            <button 
               key={item} 
-              href={`#${item.toLowerCase()}`} 
+              onClick={() => scrollToSection(navIds[idx])}
               className="text-sm font-medium text-slate-600 hover:text-[#00205B] transition-colors uppercase tracking-widest"
             >
               {item}
-            </a>
+            </button>
           ))}
           <button 
             onClick={() => setLang(lang === "zh" ? "en" : "zh")}
@@ -416,7 +425,10 @@ const Navbar = () => {
             <Languages className="w-4 h-4" />
             {lang === "zh" ? "EN" : "中文"}
           </button>
-          <button className="px-5 py-2 bg-[#00205B] text-white text-sm font-bold rounded-full hover:bg-[#001845] transition-colors uppercase tracking-widest">
+          <button 
+            onClick={() => scrollToSection("careers")}
+            className="px-5 py-2 bg-[#00205B] text-white text-sm font-bold rounded-full hover:bg-[#001845] transition-colors uppercase tracking-widest"
+          >
             {t.contactBtn}
           </button>
         </div>
@@ -437,15 +449,17 @@ const Navbar = () => {
           animate={{ opacity: 1, y: 0 }}
           className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-200 p-6 flex flex-col gap-6 shadow-xl"
         >
-          {t.nav.map((item) => (
-            <a 
+          {t.nav.map((item, idx) => (
+            <button 
               key={item} 
-              href={`#${item.toLowerCase()}`} 
-              className="text-lg font-medium text-slate-600 hover:text-[#00205B] transition-colors"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                scrollToSection(navIds[idx]);
+                setIsMobileMenuOpen(false);
+              }}
+              className="text-lg font-medium text-slate-600 hover:text-[#00205B] transition-colors text-left"
             >
               {item}
-            </a>
+            </button>
           ))}
           <button 
             onClick={() => {
@@ -457,7 +471,13 @@ const Navbar = () => {
             <Languages className="w-5 h-5" />
             {lang === "zh" ? "English" : "中文"}
           </button>
-          <button className="w-full py-3 bg-[#00205B] text-white font-bold rounded-full uppercase tracking-widest">
+          <button 
+            onClick={() => {
+              scrollToSection("careers");
+              setIsMobileMenuOpen(false);
+            }}
+            className="w-full py-3 bg-[#00205B] text-white font-bold rounded-full uppercase tracking-widest"
+          >
             {t.contactBtn}
           </button>
         </motion.div>
@@ -481,6 +501,13 @@ const Hero = () => {
     }, 6000);
     return () => clearInterval(timer);
   }, []);
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <section className="relative h-screen flex items-center overflow-hidden bg-slate-900">
@@ -536,10 +563,16 @@ const Hero = () => {
             {t.heroDesc}
           </p>
           <div className="flex flex-wrap gap-6">
-            <button className="px-10 py-4 bg-white text-[#00205B] font-bold rounded-full hover:bg-opacity-90 transition-all flex items-center gap-2 group">
+            <button 
+              onClick={() => scrollToSection("strategies")}
+              className="px-10 py-4 bg-white text-[#00205B] font-bold rounded-full hover:bg-opacity-90 transition-all flex items-center gap-2 group"
+            >
               {t.heroBtn1} <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            <button className="px-10 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all">
+            <button 
+              onClick={() => scrollToSection("platform")}
+              className="px-10 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all"
+            >
               {t.heroBtn2}
             </button>
           </div>
@@ -659,7 +692,13 @@ const Portfolio = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-end mb-16">
           <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tighter">{t.strategiesTitle}</h2>
-          <button className="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-widest border-b-2 border-[#00205B] pb-1">
+          <button 
+            onClick={() => {
+              const element = document.getElementById("launchpad");
+              if (element) element.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="hidden md:flex items-center gap-2 text-sm font-bold uppercase tracking-widest border-b-2 border-[#00205B] pb-1"
+          >
             {t.strategiesBtn} <ChevronRight className="w-4 h-4" />
           </button>
         </div>
