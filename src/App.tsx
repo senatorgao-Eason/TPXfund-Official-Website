@@ -54,14 +54,14 @@ interface Content {
 
 const translations: Record<Language, Content> = {
     zh: {
-    nav: ["平台", "策略", "研究", "人才", "职业"],
+    nav: ["策略", "研究", "人才与职业"],
     contactBtn: "联系我们",
     heroBadge: "全球领先多策略对冲基金平台",
-    heroTitle: "驱动卓越超额收益",
+    heroTitle: "规则至上，灵活始终",
     heroTitleItalic: "",
-    heroDesc: "TPX 致力于赋能顶尖投资人才，为其提供卓越的专业支持、机构级资源以及前沿交易技术。通过我们先进的多策略聚合平台，我们将多元化的交易单元 (Pods) 进行战略集成与风控优化，旨在最大程度降低波动性，为投资者创造稳定且高质量的投资回报。",
+    heroDesc: "我们是一家建立在严谨规则和灵活执行基础上的投资公司。我们依靠稳健的系统和严格的风险控制来提供持续的表现。",
     heroBtn1: "投资策略",
-    heroBtn2: "交易员伙伴",
+    heroBtn2: "加入我们",
     platformTitle: "交易员伙伴关系",
     platformDesc: "在 TPX 平台与专业支持下，领导您的团队执行独立投资策略。获取定制化资源以驱动成功。接入 TPX 在数据、研究、融资和流动性方面的全面支持，并依托我们跨全球市场和资产类别的卓越执行力。",
     platformBadge: "伙伴关系",
@@ -122,7 +122,7 @@ const translations: Record<Language, Content> = {
         description: "构建并迭代系统化驱动的投资流程，利用跨资产类别的高频数据与前沿建模获取量化优势。"
       }
     ],
-    launchpadTitle: "Trader Launchpad 计划",
+    launchpadTitle: "人才与职业",
     launchpadBadge: "招募准则",
     launchpadItems: [
       {
@@ -152,7 +152,7 @@ const translations: Record<Language, Content> = {
       }
     ],
     footerDesc: "全球多策略对冲基金平台，通过专业交易团队提供不相关的超额收益。",
-    launchpadFormTitle: "立即申请 Trader Launchpad",
+    launchpadFormTitle: "立即申请加入 TPX",
     launchpadFormName: "姓名",
     launchpadFormEmail: "电子邮箱",
     launchpadFormEdu: "学术背景 (毕业院校/学位)",
@@ -199,9 +199,8 @@ const translations: Record<Language, Content> = {
     ],
     footerLinksTitle: "平台导航",
     footerLinks: [
-      { label: "平台模式", href: "#platform" },
       { label: "投资策略", href: "#strategies" },
-      { label: "加入我们", href: "#careers" }
+      { label: "加入我们", href: "#launchpad" }
     ],
     footerLocationTitle: "全球办公室",
     footerLocation: "香港 · 新加坡",
@@ -210,14 +209,14 @@ const translations: Record<Language, Content> = {
     footerTerms: "服务条款"
   },
   en: {
-    nav: ["Platform", "Strategies", "Research", "Launchpad", "Careers"],
+    nav: ["Strategies", "Research", "Careers"],
     contactBtn: "Contact Us",
     heroBadge: "Global Multi-Strategy Hedge Fund Platform",
-    heroTitle: "Trader-Driven,",
-    heroTitleItalic: "Alpha-Focused",
-    heroDesc: "TPX empowers talented investment professionals with sophisticated expertise, institutional-grade resources, and proprietary technology. By aggregating diverse trading pods through our advanced multi-strategy aggregation platform, we aim to minimize volatility and pursue consistent, high-quality returns for our investors.",
+    heroTitle: "Rules first.",
+    heroTitleItalic: "Flexibility always.",
+    heroDesc: "We are an investment firm built on disciplined rules and flexible execution. We rely on robust systems and strict risk control to deliver consistent performance.",
     heroBtn1: "Our Strategies",
-    heroBtn2: "Trader Partnership",
+    heroBtn2: "Join Us",
     platformTitle: "Trader Partnership",
     platformDesc: "Pursue independent investment strategies, managing the process and team while leveraging TPX’s platform and expertise. Access TPX’s offerings across data, research, financing and liquidity, as well as the firm’s execution across global markets and asset classes.",
     platformBadge: "PARTNERSHIP",
@@ -278,7 +277,7 @@ const translations: Record<Language, Content> = {
         description: "Build and iterate on systematically driven investment processes, leveraging high-frequency data and advanced modeling."
       }
     ],
-    launchpadTitle: "Trader Launchpad Program",
+    launchpadTitle: "Careers",
     launchpadBadge: "EXCELLENCE",
     launchpadItems: [
       {
@@ -308,7 +307,7 @@ const translations: Record<Language, Content> = {
       }
     ],
     footerDesc: "A global multi-strategy platform delivering uncorrelated alpha through specialized trading expertise.",
-    launchpadFormTitle: "Apply for Trader Launchpad",
+    launchpadFormTitle: "Join TPX",
     launchpadFormName: "Full Name",
     launchpadFormEmail: "Email Address",
     launchpadFormEdu: "Academic Background (University/Degree)",
@@ -355,9 +354,8 @@ const translations: Record<Language, Content> = {
     ],
     footerLinksTitle: "Platform",
     footerLinks: [
-      { label: "Platform Model", href: "#platform" },
       { label: "Strategies", href: "#strategies" },
-      { label: "Careers", href: "#careers" }
+      { label: "Join Us", href: "#launchpad" }
     ],
     footerLocationTitle: "Global Offices",
     footerLocation: "Hong Kong · Singapore",
@@ -368,10 +366,31 @@ const translations: Record<Language, Content> = {
 };
 
 const LanguageContext = createContext<{ lang: Language; setLang: (l: Language) => void; t: Content }>({
-  lang: "zh",
+  lang: "en",
   setLang: () => {},
-  t: translations.zh
+  t: translations.en
 });
+
+const Logo = ({ className = "w-8 h-8", light = false }) => (
+  <div className={`flex items-center justify-center ${className}`}>
+    <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Background Square with rounded corners */}
+      <rect width="100" height="100" rx="16" fill={light ? "white" : "#00205B"} />
+      
+      {/* The "T" structure representing the Platform */}
+      {/* Vertical Stem */}
+      <rect x="44" y="40" width="12" height="35" rx="2" fill={light ? "#00205B" : "white"} />
+      
+      {/* Top Bar - Split into 3 segments representing Multi-Strategy Pods */}
+      <rect x="25" y="25" width="14" height="10" rx="2" fill={light ? "#00205B" : "white"} fillOpacity="0.6" />
+      <rect x="43" y="25" width="14" height="10" rx="2" fill={light ? "#00205B" : "white"} />
+      <rect x="61" y="25" width="14" height="10" rx="2" fill={light ? "#00205B" : "white"} fillOpacity="0.6" />
+      
+      {/* Connecting Bridge */}
+      <rect x="25" y="37" width="50" height="3" rx="1.5" fill={light ? "#00205B" : "white"} fillOpacity="0.3" />
+    </svg>
+  </div>
+);
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -391,7 +410,7 @@ const Navbar = () => {
     }
   };
 
-  const navIds = ["platform", "strategies", "research", "launchpad", "careers"];
+  const navIds = ["strategies", "research", "launchpad"];
 
   const toggleLanguage = () => {
     const newLang = lang === "zh" ? "en" : "zh";
@@ -405,10 +424,8 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <div className="w-8 h-8 bg-[#00205B] flex items-center justify-center rounded-sm">
-            <span className="text-white font-display font-bold text-xl">T</span>
-          </div>
+        <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <Logo className="w-9 h-9 group-hover:scale-105 transition-transform" />
           <span className="font-display font-bold text-xl tracking-tight text-[#00205B]">TPX FUND</span>
         </div>
 
@@ -1055,11 +1072,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-8">
-              <div className="w-8 h-8 bg-[#00205B] flex items-center justify-center rounded-sm">
-                <span className="text-white font-display font-bold text-xl">T</span>
-              </div>
-              <span className="font-display font-bold text-xl tracking-tight text-[#00205B]">TPX FUND</span>
+            <div className="flex items-center gap-3 mb-8">
+              <Logo className="w-10 h-10" />
+              <span className="font-display font-bold text-2xl tracking-tight text-[#00205B]">TPX FUND</span>
             </div>
             <p className="text-slate-500 max-w-sm mb-8">
               {t.footerDesc}
@@ -1111,7 +1126,7 @@ const Footer = () => {
 };
 
 export default function App() {
-  const [lang, setLang] = useState<Language>("zh");
+  const [lang, setLang] = useState<Language>("en");
   const t = translations[lang];
 
   return (
@@ -1120,13 +1135,34 @@ export default function App() {
         <Navbar />
         <main>
           <Hero />
-          <Thesis />
           <Culture />
           <Portfolio />
           <Research />
           <Launchpad />
         </main>
         <Footer />
+        
+        {/* Logo Preview Section for Screenshot */}
+        <section className="py-20 bg-slate-50 border-t border-slate-200">
+          <div className="max-w-7xl mx-auto px-6 text-center">
+            <h3 className="text-sm font-bold uppercase tracking-[0.3em] text-slate-400 mb-12">Logo Preview for Screenshot / 品牌标识预览</h3>
+            <div className="flex flex-wrap justify-center gap-20 items-center">
+              <div className="flex flex-col items-center gap-6">
+                <Logo className="w-64 h-64 shadow-2xl rounded-[40px]" />
+                <span className="text-xs font-mono text-slate-400">Primary Version (Deep Blue)</span>
+              </div>
+              <div className="flex flex-col items-center gap-6">
+                <div className="p-12 bg-[#00205B] rounded-[60px] shadow-2xl">
+                  <Logo className="w-64 h-64" light={true} />
+                </div>
+                <span className="text-xs font-mono text-slate-400">Inverted Version (White on Blue)</span>
+              </div>
+            </div>
+            <p className="mt-16 text-slate-400 text-xs italic">
+              Tip: Use your system's screenshot tool (Win+Shift+S or Cmd+Shift+4) to capture these high-resolution assets.
+            </p>
+          </div>
+        </section>
       </div>
     </LanguageContext.Provider>
   );
