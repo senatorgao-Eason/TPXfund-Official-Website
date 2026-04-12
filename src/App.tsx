@@ -1126,6 +1126,7 @@ const Footer = () => {
 };
 
 export default function App() {
+  // Default language set to English
   const [lang, setLang] = useState<Language>("en");
   const t = translations[lang];
 
