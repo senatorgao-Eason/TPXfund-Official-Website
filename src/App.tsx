@@ -203,7 +203,7 @@ const translations: Record<Language, Content> = {
       { label: "加入我们", href: "#launchpad" }
     ],
     footerLocationTitle: "全球办公室",
-    footerLocation: "香港 · 新加坡",
+    footerLocation: "香港 · 新加坡 · 洛杉矶",
     footerCopyright: "© 2026 TPX Fund. 保留所有权利。",
     footerPrivacy: "隐私政策",
     footerTerms: "服务条款"
@@ -358,7 +358,7 @@ const translations: Record<Language, Content> = {
       { label: "Join Us", href: "#launchpad" }
     ],
     footerLocationTitle: "Global Offices",
-    footerLocation: "Hong Kong · Singapore",
+    footerLocation: "Hong Kong · Singapore · Los Angeles",
     footerCopyright: "© 2026 TPX Fund. All rights reserved.",
     footerPrivacy: "Privacy Policy",
     footerTerms: "Terms of Service"
@@ -426,7 +426,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <Logo className="w-9 h-9 group-hover:scale-105 transition-transform" />
-          <span className="font-display font-bold text-xl tracking-tight text-[#00205B]">TPX FUND</span>
+          <span className="font-display font-bold text-xl tracking-tight text-[#00205B]">TPX Fund</span>
         </div>
 
         {/* Desktop Nav */}
@@ -1074,7 +1074,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-8">
               <Logo className="w-10 h-10" />
-              <span className="font-display font-bold text-2xl tracking-tight text-[#00205B]">TPX FUND</span>
+              <span className="font-display font-bold text-2xl tracking-tight text-[#00205B]">TPX Fund</span>
             </div>
             <p className="text-slate-500 max-w-sm mb-8">
               {t.footerDesc}
