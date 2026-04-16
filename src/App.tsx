@@ -1142,28 +1142,6 @@ export default function App() {
           <Launchpad />
         </main>
         <Footer />
-        
-        {/* Logo Preview Section for Screenshot */}
-        <section className="py-20 bg-slate-50 border-t border-slate-200">
-          <div className="max-w-7xl mx-auto px-6 text-center">
-            <h3 className="text-sm font-bold uppercase tracking-[0.3em] text-slate-400 mb-12">Logo Preview for Screenshot / 品牌标识预览</h3>
-            <div className="flex flex-wrap justify-center gap-20 items-center">
-              <div className="flex flex-col items-center gap-6">
-                <Logo className="w-64 h-64 shadow-2xl rounded-[40px]" />
-                <span className="text-xs font-mono text-slate-400">Primary Version (Deep Blue)</span>
-              </div>
-              <div className="flex flex-col items-center gap-6">
-                <div className="p-12 bg-[#00205B] rounded-[60px] shadow-2xl">
-                  <Logo className="w-64 h-64" light={true} />
-                </div>
-                <span className="text-xs font-mono text-slate-400">Inverted Version (White on Blue)</span>
-              </div>
-            </div>
-            <p className="mt-16 text-slate-400 text-xs italic">
-              Tip: Use your system's screenshot tool (Win+Shift+S or Cmd+Shift+4) to capture these high-resolution assets.
-            </p>
-          </div>
-        </section>
       </div>
     </LanguageContext.Provider>
   );
