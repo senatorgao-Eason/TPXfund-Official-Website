@@ -495,7 +495,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
           <Logo className="w-9 h-9 group-hover:scale-105 transition-transform" />
-          <span className="font-display font-bold text-xl tracking-tight text-[#00205B]">TPX Fund</span>
+          <span className="font-display font-bold text-xl tracking-tight text-[#00205B]">TPX Fund Management LLC</span>
         </div>
 
         {/* Desktop Nav */}
@@ -1262,34 +1262,16 @@ const LegalModal = ({ isOpen, onClose, title, content }: { isOpen: boolean; onCl
   );
 };
 
-const Footer = () => {
+const Footer = ({ onOpenLegal }: { onOpenLegal: (type: 'privacy' | 'terms') => void }) => {
   const { t } = useContext(LanguageContext);
-  const [modalState, setModalState] = useState<{ type: 'privacy' | 'terms' | null, isOpen: boolean }>({ type: null, isOpen: false });
-
-  const closeModal = () => setModalState({ ...modalState, isOpen: false });
-
   return (
     <footer id="careers" className="py-20 border-t border-slate-100 bg-white">
-      {/* Modals */}
-      <LegalModal 
-        isOpen={modalState.isOpen && modalState.type === 'privacy'} 
-        onClose={closeModal} 
-        title={t.privacyTitle} 
-        content={t.privacyContent} 
-      />
-      <LegalModal 
-        isOpen={modalState.isOpen && modalState.type === 'terms'} 
-        onClose={closeModal} 
-        title={t.termsTitle} 
-        content={t.termsContent} 
-      />
-
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-8">
               <Logo className="w-10 h-10" />
-              <span className="font-display font-bold text-2xl tracking-tight text-[#00205B]">TPX Fund</span>
+              <span className="font-display font-bold text-2xl tracking-tight text-[#00205B]">TPX Fund Management LLC</span>
             </div>
             <p className="text-slate-500 max-w-sm mb-8">
               {t.footerDesc}
@@ -1332,14 +1314,22 @@ const Footer = () => {
           <span>{t.footerCopyright}</span>
           <div className="flex gap-8">
             <button 
-              onClick={() => setModalState({ type: 'privacy', isOpen: true })}
-              className="hover:text-[#00205B] transition-colors uppercase tracking-widest"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenLegal('privacy');
+              }}
+              className="hover:text-[#00205B] transition-colors uppercase tracking-widest cursor-pointer"
             >
               {t.footerPrivacy}
             </button>
             <button 
-              onClick={() => setModalState({ type: 'terms', isOpen: true })}
-              className="hover:text-[#00205B] transition-colors uppercase tracking-widest"
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                onOpenLegal('terms');
+              }}
+              className="hover:text-[#00205B] transition-colors uppercase tracking-widest cursor-pointer"
             >
               {t.footerTerms}
             </button>
@@ -1354,6 +1344,7 @@ export default function App() {
   // Default language set to English
   const [lang, setLang] = useState<Language>("en");
   const [showOnePagerOnly, setShowOnePagerOnly] = useState(false);
+  const [legalModal, setLegalModal] = useState<{ type: 'privacy' | 'terms' | null, isOpen: boolean }>({ type: null, isOpen: false });
   const t = translations[lang];
 
   useEffect(() => {
@@ -1363,6 +1354,9 @@ export default function App() {
     }
   }, []);
 
+  const openLegal = (type: 'privacy' | 'terms') => setLegalModal({ type, isOpen: true });
+  const closeLegal = () => setLegalModal({ ...legalModal, isOpen: false });
+
   if (showOnePagerOnly) {
     return (
       <LanguageContext.Provider value={{ lang, setLang, t }}>
@@ -1371,7 +1365,7 @@ export default function App() {
             <div className="mb-8 flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <Logo className="w-10 h-10" />
-                <span className="font-display font-bold text-2xl tracking-tight text-[#00205B]">TPX Fund</span>
+                <span className="font-display font-bold text-2xl tracking-tight text-[#00205B]">TPX Fund Management LLC</span>
               </div>
               <div className="flex gap-4">
                 <button 
@@ -1406,7 +1400,20 @@ export default function App() {
           <Research />
           <Launchpad />
         </main>
-        <Footer />
+        <Footer onOpenLegal={openLegal} />
+
+        <LegalModal 
+          isOpen={legalModal.isOpen && legalModal.type === 'privacy'} 
+          onClose={closeLegal} 
+          title={t.privacyTitle} 
+          content={t.privacyContent} 
+        />
+        <LegalModal 
+          isOpen={legalModal.isOpen && legalModal.type === 'terms'} 
+          onClose={closeLegal} 
+          title={t.termsTitle} 
+          content={t.termsContent} 
+        />
       </div>
     </LanguageContext.Provider>
   );
