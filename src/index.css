@@ -16,3 +16,30 @@
     text-wrap: balance;
   }
 }
+
+@media print {
+  nav, footer, .launchpad-form, button {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  section {
+    page-break-after: always;
+    padding: 2rem !important;
+    border: none !important;
+  }
+
+  #onepager {
+    display: block !important;
+    border: 2px solid #00205B !important;
+    border-radius: 0 !important;
+  }
+
+  .max-w-7xl {
+    max-width: 100% !important;
+  }
+}

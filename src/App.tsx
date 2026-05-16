@@ -38,6 +38,15 @@ interface Content {
   researchMore: string;
   researchReadFull: string;
   researchItems: { title: string; date: string; category: string; excerpt: string; link: string }[];
+  privacyTitle: string;
+  privacyContent: string;
+  termsTitle: string;
+  termsContent: string;
+  onePagerTitle: string;
+  onePagerBadge: string;
+  onePagerOverview: string;
+  onePagerStats: { label: string; value: string }[];
+  onePagerInfrastructure: { title: string; desc: string }[];
   cultureBadge: string;
   cultureTitle: string;
   cultureTitleItalic: string;
@@ -188,6 +197,36 @@ const translations: Record<Language, Content> = {
         link: "https://hyperionfund.net"
       }
     ],
+    privacyTitle: "隐私政策",
+    privacyContent: `TPX Fund Management LLC（以下简称“我们”或“本公司”）尊重并保护所有投资者的个人隐私。本隐私政策旨在阐明我们如何收集、使用、存储和保护您的个人信息。
+
+1. 信息收集：我们可能收集您在申请投资、订阅研究报告或联系我们时提供的姓名、联系方式、职业背景及其他身份证明信息。
+2. 信息使用：收集的信息将仅用于身份验证、合规审查（如反洗钱审查）、业务通讯以及根据法律法规要求的监管报送。
+3. 信息保护：我们采用行业标准的端到端加密技术和严格的访问控制协议，确保您的敏感数据存储在受硬件防火墙保护的隔离服务器中。
+4. 信息共享：除非获得您的明确授权或法律法规、监管部门的强制要求，我们不会向任何第三方披露或出售您的个人信息。
+5. 您的权利：您可以随时联系我们的合规官（compliance@tpxfund.com）查询、更正或要求删除您的个人数据。`,
+    termsTitle: "服务条款",
+    termsContent: `欢迎访问 TPX Fund 官方网站。使用本网站即表示您同意遵守以下服务条款。
+
+1. 仅供参考：本网站提供的所有内容（包括但不限于研究报告、市场分析、策略介绍）仅供参考，不构成任何投资建议、法律建议或税务建议。
+2. 风险提示：投资涉及风险。过往业绩不代表未来表现。在做出任何投资决策前，您应咨询独立的财务顾问。
+3. 知识产权：本网站的所有设计、文案、数据及品牌标识（TPX Fund）均属于 TPX Fund Management LLC 的财产，未经书面许可，严禁转载、摘编或用于任何商业用途。
+4. 免责声明：本公司尽力确保本网站信息的准确性，但不对因信息延迟、错误或遗漏而导致的任何直接或间接损失承担责任。
+5. 准据法：本条款受香港特别行政区法律管辖并按其解释。`,
+    onePagerTitle: "一页通 / 核心简报",
+    onePagerBadge: "SNAPSHOT",
+    onePagerOverview: "TPX Fund 是一家全球领先的多策略投资平台。我们通过将顶尖交易人才与卓越的机构资源相结合，致力于在各种市场环境下创造稳健且不相关的超额收益。",
+    onePagerStats: [
+      { label: "资产类别", value: "6+" },
+      { label: "活跃交易单元", value: "20+" },
+      { label: "全球市场覆盖", value: "50+" },
+      { label: "风控阈值", value: "<15%" }
+    ],
+    onePagerInfrastructure: [
+      { title: "全栈技术架构", desc: "自研的高频执行引擎与实时风险监控系统，确保毫秒级的决策落地。" },
+      { title: "多策略聚合", desc: "动态资本分配机制，根据策略表现与市场环境实时优化组合。" },
+      { title: "全球运营协同", desc: "跨时区的 24/7 运营支持，确保对全球地缘政治与经济事件的即时响应。" }
+    ],
     cultureBadge: "卓越环境",
     cultureTitle: "协作驱动的",
     cultureTitleItalic: "卓越交易文化",
@@ -204,7 +243,7 @@ const translations: Record<Language, Content> = {
     ],
     footerLocationTitle: "全球办公室",
     footerLocation: "香港 · 新加坡 · 洛杉矶",
-    footerCopyright: "© 2026 TPX Fund. 保留所有权利。",
+    footerCopyright: "© 2026 TPX Fund Management LLC. 保留所有权利。",
     footerPrivacy: "隐私政策",
     footerTerms: "服务条款"
   },
@@ -343,6 +382,36 @@ const translations: Record<Language, Content> = {
         link: "https://hyperionfund.net"
       }
     ],
+    privacyTitle: "Privacy Policy",
+    privacyContent: `TPX Fund Management LLC ('we', 'us', or 'the Company') respects and protects the privacy of all investors. This Privacy Policy outlines how we collect, use, store, and protect your personal information.
+
+1. Data Collection: We may collect your name, contact details, professional background, and other identification information provided during investment applications, research subscriptions, or inquiries.
+2. Use of Information: Collected data is used solely for identity verification, compliance checks (such as AML/KYC), business communications, and regulatory reporting as required by law.
+3. Data Protection: We employ industry-standard end-to-end encryption and rigorous access control protocols. Your sensitive data is stored on isolated servers protected by hardware firewalls.
+4. Information Sharing: We do not disclose or sell your personal information to third parties unless explicitly authorized by you or required by legal, judicial, or regulatory authorities.
+5. Your Rights: You may contact our Compliance Officer (compliance@tpxfund.com) at any time to access, correct, or request the deletion of your personal data.`,
+    termsTitle: "Terms of Service",
+    termsContent: `Welcome to the official website of TPX Fund. By using this website, you agree to comply with the following Terms of Service.
+
+1. Informational Purposes Only: All content provided on this website (including research reports, market analyses, and strategy overviews) is for informational purposes only and does not constitute investment, legal, or tax advice.
+2. Risk Disclosure: Investing involves significant risk. Past performance is not indicative of future results. You should consult with an independent financial advisor before making any investment decisions.
+3. Intellectual Property: All designs, text, data, and brand identities (TPX Fund) on this website are the property of TPX Fund Management LLC. Unauthorized reproduction, distribution, or commercial use is strictly prohibited.
+4. Limitation of Liability: While we strive for accuracy, the Company is not responsible for any direct or indirect losses resulting from informational delays, errors, or omissions on this website.
+5. Governing Law: These terms shall be governed by and construed in accordance with the laws of the Hong Kong Special Administrative Region.`,
+    onePagerTitle: "Corporate One Pager",
+    onePagerBadge: "SNAPSHOT",
+    onePagerOverview: "TPX Fund is a premier global multi-strategy investment platform. We empower top-tier trading talent with sophisticated institutional resources to deliver robust, uncorrelated alpha across diverse market environments.",
+    onePagerStats: [
+      { label: "Asset Classes", value: "6+" },
+      { label: "Active Pods", value: "20+" },
+      { label: "Global Markets", value: "50+" },
+      { label: "Risk Threshold", value: "<15%" }
+    ],
+    onePagerInfrastructure: [
+      { title: "Full-Stack Tech", desc: "Proprietary high-frequency engines and real-time risk monitoring for millisecond-precision execution." },
+      { title: "Dynamic Aggregation", desc: "Advanced capital allocation framework optimizing portfolio weights based on live performance and vol." },
+      { title: "Global Synergy", desc: "Seamless cross-timezone operations ensuring 24/7 response to global geopolitical and economic shifts." }
+    ],
     cultureBadge: "Our Environment",
     cultureTitle: "Collaboration-Driven",
     cultureTitleItalic: "Excellence in Trading Culture",
@@ -359,7 +428,7 @@ const translations: Record<Language, Content> = {
     ],
     footerLocationTitle: "Global Offices",
     footerLocation: "Hong Kong · Singapore · Los Angeles",
-    footerCopyright: "© 2026 TPX Fund. All rights reserved.",
+    footerCopyright: "© 2026 TPX Fund Management LLC. All rights reserved.",
     footerPrivacy: "Privacy Policy",
     footerTerms: "Terms of Service"
   }
@@ -448,7 +517,7 @@ const Navbar = () => {
             {lang === "zh" ? "English" : "中文"}
           </button>
           <button 
-            onClick={() => scrollToSection("careers")}
+            onClick={() => scrollToSection("launchpad")}
             className="px-5 py-2 bg-[#00205B] text-white text-sm font-bold rounded-full hover:bg-[#001845] transition-colors uppercase tracking-widest"
           >
             {t.contactBtn}
@@ -495,7 +564,7 @@ const Navbar = () => {
           </button>
           <button 
             onClick={() => {
-              scrollToSection("careers");
+              scrollToSection("launchpad");
               setIsMobileMenuOpen(false);
             }}
             className="w-full py-3 bg-[#00205B] text-white font-bold rounded-full uppercase tracking-widest"
@@ -512,6 +581,86 @@ const HERO_IMAGES = [
   "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1920",
   "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&q=80&w=1920"
 ];
+
+const InvestorSummary = () => {
+  const { t } = useContext(LanguageContext);
+  return (
+    <section id="onepager" className="py-32 bg-slate-50 border-y border-slate-200">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-16">
+          {/* Header & Overview */}
+          <div className="lg:col-span-5">
+            <span className="inline-block px-3 py-1 bg-[#00205B] text-white text-[10px] font-bold uppercase tracking-widest rounded-full mb-8">
+              {t.onePagerBadge}
+            </span>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-[#00205B] mb-8 leading-tight tracking-tight">
+              {t.onePagerTitle}
+            </h2>
+            <p className="text-xl text-slate-600 leading-relaxed font-light mb-12">
+              {t.onePagerOverview}
+            </p>
+            
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 gap-8 p-10 bg-white border border-slate-200 rounded-3xl shadow-sm">
+              {t.onePagerStats.map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-4xl font-display font-bold text-[#00205B] mb-2">{stat.value}</div>
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+
+            <button 
+              onClick={() => window.print()}
+              className="mt-12 px-8 py-3 border border-slate-200 rounded-full text-slate-400 hover:text-[#00205B] hover:border-[#00205B] transition-all text-xs font-bold uppercase tracking-widest flex items-center gap-2 group"
+            >
+              Export to PDF / Print
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+
+          {/* Infrastructure & Tech */}
+          <div className="lg:col-span-7">
+            <div className="h-full flex flex-col justify-between">
+              <div className="space-y-12">
+                {t.onePagerInfrastructure.map((item, idx) => (
+                  <motion.div 
+                    key={item.title}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex gap-8 group"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-sm font-mono font-bold text-[#00205B] group-hover:bg-[#00205B] group-hover:text-white transition-all">
+                      0{idx + 1}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-[#00205B] mb-3 uppercase tracking-wider">{item.title}</h3>
+                      <p className="text-slate-500 leading-relaxed max-w-lg">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              
+              <div className="mt-16 p-8 bg-[#00205B] rounded-3xl text-white flex items-center justify-between group cursor-pointer overflow-hidden relative">
+                <div className="relative z-10">
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-white/50 mb-2">Institutional Access</div>
+                  <div className="text-xl font-bold">Request Full Data Deck</div>
+                </div>
+                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center relative z-10 group-hover:bg-white group-hover:text-[#00205B] transition-all">
+                  <ArrowRight className="w-6 h-6" />
+                </div>
+                {/* Abstract texture background */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-20 -mt-20 group-hover:scale-125 transition-transform duration-700" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Hero = () => {
   const { t } = useContext(LanguageContext);
@@ -584,7 +733,7 @@ const Hero = () => {
           <p className="text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed mb-12 font-light">
             {t.heroDesc}
           </p>
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap items-center gap-6">
             <button 
               onClick={() => scrollToSection("strategies")}
               className="px-10 py-4 bg-white text-[#00205B] font-bold rounded-full hover:bg-opacity-90 transition-all flex items-center gap-2 group"
@@ -592,7 +741,7 @@ const Hero = () => {
               {t.heroBtn1} <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
             <button 
-              onClick={() => scrollToSection("platform")}
+              onClick={() => scrollToSection("launchpad")}
               className="px-10 py-4 bg-transparent border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all"
             >
               {t.heroBtn2}
@@ -1065,10 +1214,76 @@ const Research = () => {
   );
 };
 
+const LegalModal = ({ isOpen, onClose, title, content }: { isOpen: boolean; onClose: () => void; title: string; content: string }) => {
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 sm:p-12">
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-[#00205B]/60 backdrop-blur-md"
+          />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            className="relative bg-white w-full max-w-2xl max-h-[85vh] overflow-hidden rounded-[32px] shadow-2xl flex flex-col"
+          >
+            <div className="p-8 border-b border-slate-100 flex items-center justify-between bg-white sticky top-0 z-10">
+              <h3 className="text-2xl font-display font-bold text-[#00205B]">{title}</h3>
+              <button onClick={onClose} className="p-2 hover:bg-slate-50 rounded-full transition-colors group">
+                <X className="w-6 h-6 text-slate-400 group-hover:text-[#00205B]" />
+              </button>
+            </div>
+            <div className="p-10 overflow-y-auto">
+              <div className="prose prose-slate max-w-none">
+                {content.split('\n').filter(p => p.trim() !== '').map((paragraph, idx) => (
+                  <p key={idx} className="text-slate-600 leading-relaxed mb-6 font-light">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+            <div className="p-6 bg-slate-50 border-t border-slate-100 flex justify-end sticky bottom-0">
+              <button 
+                onClick={onClose}
+                className="px-8 py-3 bg-[#00205B] text-white font-bold rounded-full text-xs uppercase tracking-widest hover:bg-[#001845] transition-all hover:shadow-lg active:scale-95"
+              >
+                Close
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 const Footer = () => {
   const { t } = useContext(LanguageContext);
+  const [modalState, setModalState] = useState<{ type: 'privacy' | 'terms' | null, isOpen: boolean }>({ type: null, isOpen: false });
+
+  const closeModal = () => setModalState({ ...modalState, isOpen: false });
+
   return (
     <footer id="careers" className="py-20 border-t border-slate-100 bg-white">
+      {/* Modals */}
+      <LegalModal 
+        isOpen={modalState.isOpen && modalState.type === 'privacy'} 
+        onClose={closeModal} 
+        title={t.privacyTitle} 
+        content={t.privacyContent} 
+      />
+      <LegalModal 
+        isOpen={modalState.isOpen && modalState.type === 'terms'} 
+        onClose={closeModal} 
+        title={t.termsTitle} 
+        content={t.termsContent} 
+      />
+
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div className="lg:col-span-2">
@@ -1116,8 +1331,18 @@ const Footer = () => {
         <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] uppercase tracking-widest text-slate-400 font-bold">
           <span>{t.footerCopyright}</span>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-[#00205B] transition-colors">{t.footerPrivacy}</a>
-            <a href="#" className="hover:text-[#00205B] transition-colors">{t.footerTerms}</a>
+            <button 
+              onClick={() => setModalState({ type: 'privacy', isOpen: true })}
+              className="hover:text-[#00205B] transition-colors uppercase tracking-widest"
+            >
+              {t.footerPrivacy}
+            </button>
+            <button 
+              onClick={() => setModalState({ type: 'terms', isOpen: true })}
+              className="hover:text-[#00205B] transition-colors uppercase tracking-widest"
+            >
+              {t.footerTerms}
+            </button>
           </div>
         </div>
       </div>
@@ -1128,7 +1353,47 @@ const Footer = () => {
 export default function App() {
   // Default language set to English
   const [lang, setLang] = useState<Language>("en");
+  const [showOnePagerOnly, setShowOnePagerOnly] = useState(false);
   const t = translations[lang];
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("onepager") === "true") {
+      setShowOnePagerOnly(true);
+    }
+  }, []);
+
+  if (showOnePagerOnly) {
+    return (
+      <LanguageContext.Provider value={{ lang, setLang, t }}>
+        <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-6">
+          <div className="max-w-7xl w-full">
+            <div className="mb-8 flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                <Logo className="w-10 h-10" />
+                <span className="font-display font-bold text-2xl tracking-tight text-[#00205B]">TPX Fund</span>
+              </div>
+              <div className="flex gap-4">
+                <button 
+                  onClick={() => setLang(lang === "zh" ? "en" : "zh")}
+                  className="px-4 py-2 bg-white border border-slate-200 rounded-full text-xs font-bold uppercase tracking-widest text-[#00205B] hover:bg-slate-50 transition-all"
+                >
+                  {lang === "zh" ? "English" : "中文"}
+                </button>
+                <button 
+                  onClick={() => (window.location.href = window.location.origin)}
+                  className="px-4 py-2 bg-white border border-slate-200 rounded-full text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-[#00205B] transition-all"
+                >
+                  Back to Site
+                </button>
+              </div>
+            </div>
+            <InvestorSummary />
+          </div>
+        </div>
+      </LanguageContext.Provider>
+    );
+  }
 
   return (
     <LanguageContext.Provider value={{ lang, setLang, t }}>
